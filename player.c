@@ -21,15 +21,34 @@ int main(){
 
 
     int guessTime=0;//record user have guessed how many time
+    int check=0;
     while(1){
+        
         char playerNum[5];
-
-        printf("Please input your answer.\n\
-(Input four different number between 0 and 9)\n");
+        if(check==0){
+            printf("Please input your answer.\n(Input four different number between 0 and 9)\n");
+        }
+        check=0;
 
         //player input number
         gets(playerNum);
         playerNum[4]='\0';
+
+        //check the input not have the same number
+        for(int i=0; i<4; i++){
+            for(int j=i+1; j<4; j++){
+                if( playerNum[i]==playerNum[j]){
+                    printf("Please input four different number between 0 and 9 again.\n");
+                    check=1;
+                    break;
+                }
+            }
+        }
+        if(check==1){
+            continue;
+        }
+        
+        
 
         //record the player have guessed the number of A and B
         int numA=0, numB=0;
