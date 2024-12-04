@@ -3,6 +3,8 @@
 #include<time.h>
 #include"game.h"
 
+int PcguessTime=0;
+
 void generateNum(char *arr){
     srand(time(NULL));
 
@@ -105,6 +107,7 @@ void questioner(){
 
     while (a!=4)
     {
+        PcguessTime++;
         printf("The answer is %s?\n", numGuess);
         printf("Please input _A_B(For example:1A0B->input 1 0)\n");
         scanf("%d %d",&a, &b);
@@ -121,6 +124,7 @@ void questioner(){
         }
 
         if(!isValidInput(record, numGuess, a, b)){
+            PcguessTime=0;
             printf("YOU CHEAT\n");
             break;
         }

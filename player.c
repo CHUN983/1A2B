@@ -3,6 +3,7 @@
 #include<time.h>
 #include"game.h"
 
+int PlayerguessTime=0;//record user have guessed how many time
 
 void player(){
 
@@ -21,7 +22,7 @@ void player(){
     CPNum[4]='\0';
 
 
-    int guessTime=0;//record user have guessed how many time
+
     int check=0;
     while(1){
         
@@ -62,12 +63,12 @@ void player(){
             }
         }
 
-        guessTime++;
+        PlayerguessTime++;
         printf("%dA%dB\n",numA,numB);//tell user how many A and B
 
         if(numA==4){
             printf("You Win!\n");
-            printf("You have guessed %d times!", guessTime);
+            printf("You have guessed %d times!", PlayerguessTime);
             break;
         }
 

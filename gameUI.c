@@ -80,5 +80,5 @@ void displayGameModel() {
 
     printf("b. Back to Main Menu\n\n");
 
-    printf("Enter your choice (1-4 or b): ");
+    printf("Enter your choice (1-4 or b): \n");
 }

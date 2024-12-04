@@ -27,8 +27,25 @@ int main(){
             }else if(select=='2'){
                 player();
             }else if(select =='3'){
+                
 
             }else if(select =='4'){
+                int player_GuessTime=0, pc_GuessTime=0;
+                printf("You guess first!\n");
+                player();
+                player_GuessTime = PlayerguessTime;
+                printf("Turn you are questioner!\n");
+                questioner();
+                pc_GuessTime = PcguessTime;
+
+                if(player_GuessTime > pc_GuessTime){
+                    printf("Player win!\n");
+                }else if(player_GuessTime < pc_GuessTime){
+                    printf("Computer win!\n");
+                }else{
+                    printf("Tie!\n");
+                }
+
 
             }else{
                 continue;
