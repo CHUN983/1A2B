@@ -76,6 +76,21 @@ void updateRecord(char *record, char *numGuess, int a, int b) {
     }
 }
 
+int isValidInput(char *record, char *numGuess, int a, int b) {
+    if (a + b > 4 || a < 0 || b < 0) {
+        return 0; // 無效輸入
+    }
+    updateRecord(record, numGuess, a, b);
+
+    int validCount = 0;
+    for (int i = 0; i < 10000; i++) {
+        if (record[i] == 'O') {
+            validCount++;
+        }
+    }
+    return validCount > 0; // 若無合法的候選答案，則視為作弊
+}
+
 
 int main(){
     int a=0,b=0;//for user to input A and B
@@ -104,21 +119,29 @@ int main(){
             record[place] = 'X';
         }
 
-        updateRecord(record, numGuess, a, b);
+        if(!isValidInput(record, numGuess, a, b)){
+            printf("YOU CHEAT\n");
+            break;
+        }
 
+        int OSum=0;
         for(int i=0; i<10000; i++){
             if(record[i]=='O'){
-                printf("%d ",i);
+                OSum++;
             }
         }
 
+        OSum/=2;
         for(int i=0; i<10000; i++){
             if(record[i]=='O'){
-                for(int j=3; j>=0; j--){
-                    numGuess[j] = i%10+'0';
-                    i/=10;
+                OSum--;
+                if(OSum==0){
+                    for(int j=3; j>=0; j--){
+                        numGuess[j] = i%10+'0';
+                        i/=10;
+                    }
+                    break;
                 }
-                break;
             }
         }
         
