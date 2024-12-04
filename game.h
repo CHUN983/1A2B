@@ -4,5 +4,8 @@
 
 void player();
 void questioner();
+void displayGameInstructions();
+void displayGameStart();
+void displayGameModel();
 
 #endif

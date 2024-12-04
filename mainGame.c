@@ -1,46 +1,70 @@
 #include<stdio.h>
+#include<conio.h>
 #include"game.h"
 
 
 int main(){
+    char select;
     while(1){
-        printf("Which do you want to be?\n");
-        char select;
-        printf("a.Questioner  b.Player (input a or b)\n");
+        displayGameStart();
 
-
-        
-        while (1){
+        fflush(stdin);
+        select = getch();
+        if(select!='a' && select!='b' && select!='c' && select!='x'){
+            printf("Please input 'a' or 'b' or 'c' or 'x' again!\n");
+        }else if(select == 'a'){
+            displayGameInstructions();
             fflush(stdin);
-            scanf("%c", &select);
-            if(select!='a' && select!='b'){
-                printf("Please input 'a' or 'b' again.\n");
-            }else if(select=='a'){
+            select = getch();
+        }else if(select=='b'){
+            displayGameModel();
+            fflush(stdin);
+            select = getch();
+            if(select!='1' && select!='2' && select!='3' && select!='4' && select!='b'){
+                printf("Please input '1' or '2' or '3' or '4' or 'b' again!\n");
+            }else if(select=='1'){
                 questioner();
-                break;
-            }else{
+            }else if(select=='2'){
                 player();
-                break;
-            }
+            }else if(select =='3'){
 
-        }
+            }else if(select =='4'){
 
-        printf("Do you want to play again? Yes or No\nPlease input y or n\n");
-        while(1){
-            fflush(stdin);
-            scanf("%c", &select);
-            if(select!='y' && select != 'n'){
-                printf("Please input 'y' or 'n' again.\n");
             }else{
-                break;
+                continue;
             }
-        }
+        }else if(select=='c'){
 
-        if(select=='y'){
-            continue;
         }else{
             break;
         }
     }
+
+    
+        // while (1){
+        //     fflush(stdin);
+        //     scanf("%c", &select);
+        //     if(select!='a' && select!='b'){
+        //         printf("Please input 'a' or 'b' again.\n");
+        //     }else if(select=='a'){
+                
+        //         break;
+        //     }else{
+                
+        //         break;
+        //     }
+
+        // }
+
+        // printf("Do you want to play again? Yes or No\nPlease input y or n\n");
+        // while(1){
+        //     fflush(stdin);
+        //     scanf("%c", &select);
+        //     if(select!='y' && select != 'n'){
+        //         printf("Please input 'y' or 'n' again.\n");
+        //     }else{
+        //         break;
+        //     }
+        // }
 
 }
