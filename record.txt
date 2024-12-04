@@ -1,0 +1,36 @@
+0
+all of num can't not appeaer
+-------------------------------------------------
+1
+two repeat number can't not appear 
+
+1A
+one of number appear the same place
+
+1B
+the numer will not appear in the same place
+
+--------------------------------------------------
+2
+two repeat number can't not appear 
+
+1A1B
+
+2A
+
+2B
+
+---------------------------------------------------
+3
+
+1A2B
+2A1B
+3A
+3B
+
+---------------------------------------------------
+4
+
+1A3B
+2A2B
+4B
