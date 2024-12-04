@@ -10,7 +10,7 @@ void generateNum(char *arr){
         for(int j=0; j<i; j++){
             if(arr[i] == arr[j]){
                 arr[i] = rand()%10+'0';
-                j=0;
+                j=-1;
             }
         }
     }
@@ -42,25 +42,82 @@ void generateRecord(char *record){
     }
 }
 
-
-
-void ZeroAB(char *record, char *numGuess){
+void updateRecord(char *record, char *numGuess, int type, int a, int b){
     for(int i=0; i<10000; i++){
         int tmp = i;
         if(record[i]=='O'){
-            for(int j=0; j<4; j++){
-                int tmpMod = tmp%10;
-                for(int k=0; k<4; k++){
-                    if(numGuess[k]==tmpMod+'0'){
-                        record[i] = 'X';
+            int check=0;//for check the before number have been the same
+            if(type==0){
+                for(int j=0; j<4; j++){
+                    int tmpMod = tmp%10;
+                    for(int k=0; k<4; k++){
+                        if(numGuess[k]==tmpMod+'0'){
+                            record[i] = 'X';
+                        }
                     }
+                    if(record[i]=='X')
+                        break;
+                    tmp/=10;
                 }
-                if(record[i]=='X')
-                    break;
-                tmp/=10;
+            }else if(type==1 || type == 2){
+                if(a==1 || (a==2&&b==0) ){
+                    for(int j=3; j>=0; j--){
+                        int tmpMod = tmp%10;
+                        for(int k=0; k<4; k++){
+                            if(numGuess[k]==tmpMod+'0'){
+                                if(k!=j){
+                                    record[i] = 'X';
+                                }else if(k==j){
+                                    if(check == a){
+                                        record[i] = 'X';
+                                    }else{
+                                        check ++;
+                                    }
+                                    
+                                }
+                                    
+                            }
+                        }
+                        if(record[i]=='X')
+                            break;
+                        tmp/=10;
+                    }
+                }else if(b==1 || (b==2&&a==0)){
+                    for(int j=3; j>=0; j--){
+                        int tmpMod = tmp%10;
+                        for(int k=0; k<4; k++){
+                            if(numGuess[k]==tmpMod+'0'){
+                                if(k==j){
+                                    record[i] = 'X';
+                                }else if(k!=j){
+                                    if(check == b){
+                                        record[i] = 'X';
+                                    }else{
+                                        check ++;
+                                    }
+                                    
+                                }
+                                    
+                            }
+                        }
+                        if(record[i]=='X')
+                            break;
+                        tmp/=10;
+                    }
+                }else{
+
+                }
             }
+
         }
     }
+}
+
+
+
+void ZeroAB(char *record, char *numGuess){
+
+    updateRecord(record, numGuess, 0, 0 ,0);
 
     //decide new numGuess
     for(int i=0; i<10000; i++){
@@ -77,63 +134,7 @@ void ZeroAB(char *record, char *numGuess){
 }
 
 void oneAB(char *record, char *numGuess, int a, int b){
-    if(a==1){
-        for(int i=0; i<10000; i++){
-            int tmp = i;
-            if(record[i]=='O'){
-                int check=0;//for check the before number have been the same
-                for(int j=3; j>=0; j--){
-                    int tmpMod = tmp%10;
-                    for(int k=0; k<4; k++){
-                        if(numGuess[k]==tmpMod+'0'){
-                            if(k!=j){
-                                record[i] = 'X';
-                            }else if(k==j){
-                                if(check == 1){
-                                    record[i] = 'X';
-                                }else{
-                                    check = 1;
-                                }
-                                
-                            }
-                                
-                        }
-                    }
-                    if(record[i]=='X')
-                        break;
-                    tmp/=10;
-                }
-            }
-        }
-    }else{
-        for(int i=0; i<10000; i++){
-            int tmp = i;
-            if(record[i]=='O'){
-                int check=0;//for check the before number have been the same
-                for(int j=3; j>=0; j--){
-                    int tmpMod = tmp%10;
-                    for(int k=0; k<4; k++){
-                        if(numGuess[k]==tmpMod+'0'){
-                            if(k==j){
-                                record[i] = 'X';
-                            }else if(k!=j){
-                                if(check == 1){
-                                    record[i] = 'X';
-                                }else{
-                                    check = 1;
-                                }
-                                
-                            }
-                                
-                        }
-                    }
-                    if(record[i]=='X')
-                        break;
-                    tmp/=10;
-                }
-            }
-        }
-    }
+    updateRecord(record, numGuess, a+b, a, b);
 
     //decide new numGuess
     for(int i=0; i<10000; i++){
@@ -148,7 +149,7 @@ void oneAB(char *record, char *numGuess, int a, int b){
 }
 
 void twoAB(char* record, char* numGuess, int a, int b){
-
+    updateRecord(record, numGuess, a+b, a, b);
 }
 
 
@@ -158,16 +159,17 @@ void deleteRecord(char *record, char *numGuess, int a, int b){
         ZeroAB(record, numGuess);
     }else if(sum==1){
         oneAB(record, numGuess, a, b);
-        for(int i=0; i<10000; i++){
-            if(record[i]=='O')
-                printf("%d ", i);
-        }
     }else if(sum==2){
         twoAB(record, numGuess, a, b);
     }else if(sum==3){
         //threeAB(record, numGuess, a, b);
     }else{
         //fourAB(record, numGuess, a, b);
+    }
+
+    for(int i=0; i<10000; i++){
+        if(record[i]=='O')
+            printf("%d ", i);
     }
 }
 
