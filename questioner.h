@@ -92,7 +92,7 @@ int isValidInput(char *record, char *numGuess, int a, int b) {
 }
 
 
-int main(){
+int questioner(){
     int a=0,b=0;//for user to input A and B
 
     char numGuess[5];//the number that we guess

@@ -3,7 +3,7 @@
 #include<time.h>
 
 
-int main(){
+int player(){
 
 
     //generate four numbers and they don't repeat
