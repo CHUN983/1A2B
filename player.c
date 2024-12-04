@@ -1,9 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include"game.h"
 
 
-int player(){
+void player(){
 
 
     //generate four numbers and they don't repeat

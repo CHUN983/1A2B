@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include"game.h"
 
 void generateNum(char *arr){
     srand(time(NULL));
@@ -92,7 +93,7 @@ int isValidInput(char *record, char *numGuess, int a, int b) {
 }
 
 
-int questioner(){
+void questioner(){
     int a=0,b=0;//for user to input A and B
 
     char numGuess[5];//the number that we guess
@@ -135,7 +136,7 @@ int questioner(){
         for(int i=0; i<10000; i++){
             if(record[i]=='O'){
                 OSum--;
-                if(OSum==0){
+                if(OSum==0 || OSum==-1){
                     for(int j=3; j>=0; j--){
                         numGuess[j] = i%10+'0';
                         i/=10;
