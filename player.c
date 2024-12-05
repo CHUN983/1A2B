@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include"game.h"
+#include"gameHistory.h"
 
 int PlayerguessTime=0;//record user have guessed how many time
 
@@ -71,8 +72,6 @@ void player(){
         printf("%dA%dB\n",numA,numB);//tell user how many A and B
 
         if(numA==4){
-            // printf("You Win!\n");
-            // printf("You have guessed %d times!", PlayerguessTime);
             break;
         }
 

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include"game.h"
+#include"gameUI.h"
 
 void displayGameInstructions() {
     printf("==================================================\n");

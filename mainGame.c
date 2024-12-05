@@ -1,10 +1,13 @@
 #include<stdio.h>
 #include<conio.h>
 #include"game.h"
+#include"gameUI.h"
+#include"gameHistory.h"
 
 
 int main(){
     char select;
+    
     while(1){
         displayGameStart();
 
@@ -27,6 +30,20 @@ int main(){
                 printf("                GAME QUESTIONER MODE              \n");
                 printf("==================================================\n");
                 questioner();
+                //record history-----------------------------
+                char grade[20];
+                int temp = PcguessTime;
+                for(int i=0; i<20; i++){
+                    grade[i] = temp%10+'0';
+                    temp/=10;
+                    if(temp==0){
+                        grade[i+1]='\0';
+                        break;
+                    }
+                }
+                generateRecord("Player", "QUESTIONER", grade);
+                //record history-----------------------------
+
             }else if(select=='2'){
                 printf("==================================================\n");
                 printf("                 GAME GUESSER MODE                \n");
@@ -34,6 +51,20 @@ int main(){
                 player();
                 printf("You Win!\n");
                 printf("You have guessed %d times!\n", PlayerguessTime);
+
+                //record history-----------------------------
+                char grade[20];
+                int temp = PlayerguessTime;
+                for(int i=0; i<20; i++){
+                    grade[i] = temp%10+'0';
+                    temp/=10;
+                    if(temp==0){
+                        grade[i+1]='\0';
+                        break;
+                    }
+                }
+                generateRecord("Player", "Guesser", grade);
+                //record history-----------------------------
 
                 printf("Press any key to be continue.\n");
                 fflush(stdin);
@@ -66,11 +97,15 @@ int main(){
                 
                 if(player_GuessTime < pc_GuessTime){
                     printf("Player win!\n");
+                    generateRecord("Player", "PC VS PLAYER", "Player Win");
                 }else if(player_GuessTime > pc_GuessTime){
                     printf("Computer win!\n");
+                    generateRecord("Player", "PC VS PLAYER", "Computer Win");
                 }else{
                     printf("Tie!\n");
+                    generateRecord("Player", "PC VS PLAYER", "Tie");
                 }
+                
 
                 printf("Press c to be continue.\n");
                 printf("Press x to be exit.\n");
@@ -88,13 +123,14 @@ int main(){
                     break;
                 }
 
-
-
             }else{
                 continue;
             }
         }else if(select=='c'){
-
+            displayGameHistory();
+            printf("Press any key to be continue.\n");
+            fflush(stdin);
+            select = getch();
         }else{
             break;
         }

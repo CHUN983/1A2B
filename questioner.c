@@ -34,7 +34,7 @@ int is_repeat(int num){
     return sum==4? 0 : 1;
 }
 
-void generateRecord(char *record){
+void generateTable(char *record){
     for(int i=0; i<10000; i++){
         int digits[4];
         if(is_repeat(i) == 1){
@@ -101,7 +101,7 @@ void questioner(){
     char numGuess[5];//the number that we guess
     char record[10001];//to record who can use who can't use
     generateNum(numGuess);
-    generateRecord(record);
+    generateTable(record);
     numGuess[4]= '\0';
     record[10000]= '\0';
 

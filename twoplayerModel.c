@@ -5,7 +5,7 @@
 void twoPlayerGame() {
     char guesser[5];
     char record[10001];//to record who can use who can't use
-    generateRecord(record);
+    generateTable(record);
     record[10000]= '\0';
 
     int NumA=0, NumB=0;
@@ -64,7 +64,7 @@ void twoPlayerGame() {
             printf("Done!\n");
             printf("Player%d guess %d times.\n",round%2+1, round%2+1==1? guessPlayer1Num : guessPlayer2Num);
             round++;
-            generateRecord(record);
+            generateTable(record);
             continue;
         }
 
