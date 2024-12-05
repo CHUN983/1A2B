@@ -37,6 +37,13 @@ int main(){
                     grade[i] = temp%10+'0';
                     temp/=10;
                     if(temp==0){
+                        //reverse string
+                        for(int j=0; j<i; j++){
+                            char cTemp = grade[j];
+                            grade[j] = grade[i];
+                            grade[i] = cTemp;
+                        }
+
                         grade[i+1]='\0';
                         break;
                     }
@@ -59,6 +66,13 @@ int main(){
                     grade[i] = temp%10+'0';
                     temp/=10;
                     if(temp==0){
+                        //reverse string
+                        for(int j=0; j<i; j++){
+                            char cTemp = grade[j];
+                            grade[j] = grade[i];
+                            grade[i] = cTemp;
+                        }
+
                         grade[i+1]='\0';
                         break;
                     }
