@@ -132,7 +132,7 @@ flowchart TD
     I --> J[Display A and B]
     J --> K[Increment Player Guess Count]
     K --> L{Is numA == 4?}
-    L -- Yes --> M[End Game (Player Wins)]
+    L -- Yes --> M[End Game Player Wins]
     L -- No --> C[Ask Player for Another Guess]
     M --> N[End]
 
