@@ -41,8 +41,8 @@
 
 ### FlowChart
 **mainGame.c**
-![FlowChart](photo/mainGame_flowchart1.png)
-![FlowChart](photo/mainGame_flowchart2.png)
+<!-- ![FlowChart](photo/mainGame_flowchart1.png)
+![FlowChart](photo/mainGame_flowchart2.png) -->
 ```mermaid
 graph TD
     A[開始] --> B[顯示主選單]
@@ -92,6 +92,8 @@ graph TD
 ```
 
 **出題者模式(Questioner)**
+<!-- ![FlowChart](photo/questioner_flowchart1.png)
+![FlowChart](photo/questioner_flowchart2.png) -->
 ```mermaid
 
 flowchart TD
@@ -119,6 +121,9 @@ flowchart TD
 ```
 
 **解答者模式(guesser)**
+<!-- ![FlowChart](photo/guesser_flowchart1.png)
+![FlowChart](photo/guesser_flowchart2.png) -->
+
 ```mermaid
 
 flowchart TD
@@ -140,6 +145,8 @@ flowchart TD
 ```
 
 **雙人模式(Two-Player)**
+<!-- ![FlowChart](photo/twoPlayer_flowchart1.png)
+![FlowChart](photo/twoPlayer_flowchart2.png) -->
 ```mermaid
 
 flowchart TD
@@ -172,6 +179,7 @@ flowchart TD
 ```
 
 **gameHistory.c**
+<!-- ![FlowChart](photo/gameHistory_flowchart.png) -->
 ```mermaid
 
 flowchart TD
