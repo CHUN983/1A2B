@@ -41,6 +41,7 @@
 
 ### FlowChart
 **mainGame.c**
+![FlowChart](photo/mainGame_flowchart.png)
 ```mermaid
 graph TD
     A[開始] --> B[顯示主選單]
