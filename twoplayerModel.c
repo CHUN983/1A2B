@@ -1,94 +1,87 @@
 // two_player_game.c
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
-
-#define MAX_ATTEMPTS 10
-
-// 檢查玩家1的輸入是否有重複數字
-int hasDuplicate(char *num) {
-    for (int i = 0; i < 4; i++) {
-        for (int j = i + 1; j < 4; j++) {
-            if (num[i] == num[j]) {
-                return 1; // 重複
-            }
-        }
-    }
-    return 0; // 沒有重複
-}
-
-// 計算 A 和 B
-void calculateAB(char *guess, char *answer, int *a, int *b) {
-    *a = *b = 0;
-
-    // 計算 A
-    for (int i = 0; i < 4; i++) {
-        if (guess[i] == answer[i]) {
-            (*a)++;
-        }
-    }
-
-    // 計算 B
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (guess[i] == answer[j] && i != j) {
-                (*b)++;
-            }
-        }
-    }
-}
-
-// 檢查 Player2 的輸入是否合理 (是否作弊)
-int isValidAB(char *guess, char *answer, int a, int b) {
-    int calculatedA = 0, calculatedB = 0;
-    calculateAB(guess, answer, &calculatedA, &calculatedB);
-
-    // 如果計算的 A 和 B 與 Player2 提供的不匹配，則視為作弊
-    if (calculatedA != a || calculatedB != b) {
-        return 0; // 作弊
-    }
-    return 1; // 合法
-}
+#include"game.h"
 
 void twoPlayerGame() {
-    char answer[5] = {'1', '2', '3', '4'};  // 假設答案是 '1234'
-    char player1Guess[5];
-    int player2A, player2B;
-    int attempts = 0;
+    char guesser[5];
+    char record[10001];//to record who can use who can't use
+    generateRecord(record);
+    record[10000]= '\0';
 
-    printf("Player1, please guess a 4-digit number (with no repeating digits):\n");
+    int NumA=0, NumB=0;
+    int guessPlayer1Num=0,guessPlayer2Num=0;//record player1 and player2's score who can guess less time
+    char round=0;
 
-    while (1) {
-        attempts++;
+    while(1){
+        if(round>1){
+            break;
+        }
+        printf("Player%d guesses first!\n", round%2+1);
+        printf("Please input your answer.\n(Input four different number between 0 and 9)\n");
 
-        // 讓 Player1 輸入猜測
-        printf("Attempt %d: Enter your guess: ", attempts);
-        scanf("%s", player1Guess);
-        if (strlen(player1Guess) != 4 || hasDuplicate(player1Guess)) {
-            printf("Invalid input! Please enter 4 different digits.\n");
+        //first input the number
+        if(round%2+1 == 1){
+            guessPlayer1Num++;
+        }else{
+            guessPlayer2Num++;
+        }
+        while(1){
+            fflush(stdin);
+            scanf("%4s",guesser);
+            guesser[4]='\0';
+
+            //check the input not have the same number
+            int check=0;
+            for(int i=0; i<4; i++){
+                for(int j=i+1; j<4; j++){
+                    if( guesser[i]==guesser[j]){
+                        printf("Please input four different number between 0 and 9 again.\n");
+                        check=1;
+                        break;
+                    }
+                }
+            }
+            if(check==0){
+                break;
+            }
+        }
+
+        //second let the other player to input NumA and NumB, and we should check the player have cheat or not
+        printf("Player%d give the hint!\n", round%2==0? 2 : 1);
+        printf("Please input _A_B(For example:1A0B->input 1 0)\n");
+        scanf("%d %d",&NumA, &NumB);
+
+        //the number who isn't 4a should be cannel
+        if(NumA!=4){
+            int place=0;
+            for(int i=0; i<4; i++){
+                place+=guesser[i]-'0';
+                place*=10;
+            }
+            place/=10;
+            record[place] = 'X';
+        }else{
+            printf("Done!\n");
+            printf("Player%d guess %d times.\n",round%2+1, round%2+1==1? guessPlayer1Num : guessPlayer2Num);
+            round++;
+            generateRecord(record);
             continue;
         }
 
-        // Player2 根據 Player1 的猜測輸入 A 和 B
-        printf("Player2, enter the number of A and B for the guess '%s' (format: numA numB):\n", player1Guess);
-        scanf("%d %d", &player2A, &player2B);
-
-        if (!isValidAB(player1Guess, answer, player2A, player2B)) {
-            printf("Player2 is cheating! The A and B values are not valid.\n");
+        if(!isValidInput(record, guesser, NumA, NumB)){
+            printf("Player%d CHEAT!\n",round%2+1);
             break;
         }
 
-        // 如果 Player1 猜對了
-        if (player2A == 4) {
-            printf("Congratulations, Player1! You've guessed the correct number '%s' in %d attempts.\n", player1Guess, attempts);
-            break;
-        }
+
     }
-}
 
-int main() {
-    printf("Welcome to the Two-Player Number Guessing Game!\n");
-    twoPlayerGame();
-    return 0;
+    if(guessPlayer1Num > guessPlayer2Num){
+        printf("Player2 Win the game!\n");
+    }else{
+        printf("Player1 Win the game!\n");
+    }
+
+
+
 }

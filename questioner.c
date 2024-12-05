@@ -124,7 +124,7 @@ void questioner(){
         }
 
         if(!isValidInput(record, numGuess, a, b)){
-            PcguessTime=0;
+            PcguessTime=100;
             printf("YOU CHEAT\n");
             break;
         }

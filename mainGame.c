@@ -24,12 +24,12 @@ int main(){
                 printf("Please input '1' or '2' or '3' or '4' or 'b' again!\n");
             }else if(select=='1'){
                 printf("==================================================\n");
-                printf("                GAME QUESTIONER MODEL             \n");
+                printf("                GAME QUESTIONER MODE              \n");
                 printf("==================================================\n");
                 questioner();
             }else if(select=='2'){
                 printf("==================================================\n");
-                printf("                 GAME GUESSER MODEL               \n");
+                printf("                 GAME GUESSER MODE                \n");
                 printf("==================================================\n");
                 player();
                 printf("You Win!\n");
@@ -39,12 +39,19 @@ int main(){
                 fflush(stdin);
                 select = getch();
             }else if(select =='3'){
-                
+                printf("==================================================\n");
+                printf("                GAME Two-Player MODE              \n");
+                printf("==================================================\n");
+                twoPlayerGame();
+
+                printf("Press any key to be continue.\n");
+                fflush(stdin);
+                select = getch();
 
             }else if(select =='4'){
                 int player_GuessTime=0, pc_GuessTime=0;
                 printf("==================================================\n");
-                printf("               GAME PC VS PLAYER MODEL            \n");
+                printf("               GAME PC VS PLAYER MODE             \n");
                 printf("==================================================\n");
                 printf("You guess first!\n");
                 player();

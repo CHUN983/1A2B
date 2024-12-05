@@ -5,11 +5,7 @@
 
 int PlayerguessTime=0;//record user have guessed how many time
 
-void player(){
-
-
-    //generate four numbers and they don't repeat
-    char CPNum[5]={'0'};//store numbers series
+void generateNumber(char *CPNum){
     srand(time(0));    //let the random numbers don't the same that everytimes open;
     for(int i=0; i<4 ;i++){
         CPNum[i]  = (char) (rand()%10+'0');
@@ -20,6 +16,14 @@ void player(){
         }
     }
     CPNum[4]='\0';
+}
+
+void player(){
+
+
+    //generate four numbers and they don't repeat
+    char CPNum[5]={'0'};//store numbers series
+    generateNumber(CPNum);
 
 
 
