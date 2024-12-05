@@ -24,11 +24,12 @@
 2. **遊戲歷史紀錄：** 儲存並顯示遊戲結果，便於回顧。
 3. **作弊檢測：** 確保輸入數據的一致性，維持公平性。
 4. **良好程式結構：** 模組化函數設計與可讀的變數命名，方便維護。
-5. **額外功能：**
+5. **強化介面設計:** 使用 ASCII 藝術美化操作介面。
+6. **額外功能：**
    - 帶時間戳的遊戲紀錄。
    - 玩家與電腦對戰的競技模式。
-   - 以 ASCII 藝術增強視覺效果的介面與遊戲說明介紹。
    - 玩家與玩家的對戰。
+   - 
 
 ---
 
@@ -261,13 +262,13 @@ gcc player.c questioner.c mainGame.c gameUI.c twoplayerModel.c gameHistory.c -o 
 ![遊戲模式](photo/gameMode.png)
 
 ### 遊戲過程
-## Questioner Mode
+#### Questioner Mode
 ![遊戲過程](photo/questioner.png)
-## Guesser Mode
+#### Guesser Mode
 ![遊戲過程](photo/guesser.png)
-## Two-Player Mode
+#### Two-Player Mode
 ![遊戲過程](photo/twoPlayer.png)
-## Computer vs. Player Mode
+#### Computer vs. Player Mode
 ![遊戲過程](photo/playerVScomputer1.png)
 ![遊戲過程](photo/playerVScomputer2.png)
 
@@ -277,10 +278,10 @@ gcc player.c questioner.c mainGame.c gameUI.c twoplayerModel.c gameHistory.c -o 
 ---
 
 ## 新功能
-1. **遊戲歷史紀錄：** 所有遊戲均以時間戳記錄並儲存。
-2. **玩家與電腦對戰模式：** 玩家與電腦競速猜數字的全新模式。
-3. **作弊檢測：** 驗證使用者輸入的正確性，防止作弊行為。
-4. **強化介面設計：** 使用 ASCII 藝術美化操作介面。
+1. **新增猜題記錄：** 新增每次的猜題記錄除了玩家能直接知道自己猜了幾次外，在之後的遊戲紀錄，對戰模式下都有幫助。 
+2. **玩家與玩家對戰模式：** 玩家與玩家間自行比賽的方式，其中程式會幫忙檢測玩家間是否存在欺騙的行為。
+3. **玩家與電腦對戰模式：** 玩家與電腦競速猜數字的全新模式。
+4. **遊戲歷史紀錄：** 所有遊戲均以時間戳記錄並儲存。
 
 ---
 
