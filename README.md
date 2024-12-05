@@ -97,26 +97,26 @@ flowchart TD
     B --> C[Generate Candidate Table]
     C --> D[Initialize a and b to 0]
     D --> E[Loop until 4A is reached]
-    E --> F[Increment Guess Count (PcguessTime++)]
+    E --> F[Increment Guess Count ]
     F --> G[Display Current Guess]
-    G --> H[Get User Input (A, B)]
+    G --> H[Get User Input ]
     H --> I{A == 4?}
-    I -- Yes --> J[End (Correct Guess)]
+    I -- Yes --> J[End : Correct Guess]
     I -- No --> K[Invalid Input Handling]
     K --> L[Mark Current Guess as Invalid]
-    L --> M[Validate Input (isValidInput)]
+    L --> M[Validate Input : isValidInput]
     M --> N{Input is valid?}
     N -- No --> O[Cheat Detected!]
     N -- Yes --> P[Calculate Remaining Valid Candidates]
     P --> Q[Find Midpoint Candidate]
     Q --> R[Update Guess with Midpoint Candidate]
     R --> E
-    O --> Z[End (Cheat Detected)]
+    O --> Z[End : Cheat Detected]
     J --> Z
 
 ```
 
-**解答者模式**
+**解答者模式(guesser)**
 ```mermaid
 
 flowchart TD
@@ -132,7 +132,7 @@ flowchart TD
     I --> J[Display A and B]
     J --> K[Increment Player Guess Count]
     K --> L{Is numA == 4?}
-    L -- Yes --> M[End Game Player Wins]
+    L -- Yes --> M[End Game and display Player Wins]
     L -- No --> C[Ask Player for Another Guess]
     M --> N[End]
 
