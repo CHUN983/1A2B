@@ -2,6 +2,8 @@
 #include"game.h"
 #include"gameUI.h"
 
+
+// Function to display game instructions and rules
 void displayGameInstructions() {
     printf("==================================================\n");
     printf("                  1A2B Game Rules                 \n");
@@ -38,6 +40,8 @@ void displayGameInstructions() {
     printf("==================================================\n");
 }
 
+
+// Function to display the game start menu
 void displayGameStart(){
         printf("\n\
             ||-------------------------------------------------------------------------||\n\
@@ -57,6 +61,9 @@ void displayGameStart(){
             ||-------------------------------------------------------------------------||\n");
 }
 
+
+
+// Function to display the game mode selection menu
 void displayGameModel() {
     printf("==================================================\n");
     printf("                  GAME MODE SELECTION             \n");
