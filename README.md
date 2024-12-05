@@ -105,16 +105,24 @@ gcc player.c questioner.c mainGame.c gameUI.c twoplayerModel.c gameHistory.c -o 
 ## 執行畫面截圖
 
 ### 主選單
-![主選單](screenshots/main_menu.png)
+![主選單](photo/gameStart.png)
 
 ### 遊戲模式
-![遊戲模式](screenshots/game_modes.png)
+![遊戲模式](photo/gameMode.png)
 
 ### 遊戲過程
-![遊戲過程](screenshots/gameplay.png)
+## Questioner Mode
+![遊戲過程](photo/questioner.png)
+## Guesser Mode
+![遊戲過程](photo/guesser.png)
+## Two-Player Mode
+![遊戲過程](photo/twoPlayer.png)
+## Computer vs. Player Mode
+![遊戲過程](photo/playerVScomputer1.png)
+![遊戲過程](photo/playerVScomputer2.png)
 
 ### 遊戲歷史
-![遊戲歷史](screenshots/game_history.png)
+![遊戲歷史](photo/gameHistory.png)
 
 ---
 

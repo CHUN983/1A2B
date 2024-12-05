@@ -70,6 +70,10 @@ int main() {
                     calculateGrade(PcguessTime, grade);
                     generateRecord("Player", "QUESTIONER", grade);
 
+                    printf("Press any key to continue.\n");
+                    fflush(stdin);
+                    getch();
+
                 } else if (select == '2') {
                     // Guesser mode
                     printf("==================================================\n");
@@ -120,16 +124,19 @@ int main() {
 
                     // Display results
                     printf("Player vs Computer: %d : %d\n", playerGuessTime, pcGuessTime);
-
-                    if (playerGuessTime < pcGuessTime) {
-                        printf("Player wins!\n");
-                        generateRecord("Player", "PC VS PLAYER", "Player Win");
-                    } else if (playerGuessTime > pcGuessTime) {
-                        printf("Computer wins!\n");
-                        generateRecord("Player", "PC VS PLAYER", "Computer Win");
-                    } else {
-                        printf("It's a tie!\n");
-                        generateRecord("Player", "PC VS PLAYER", "Tie");
+                    if(playerGuessTime!=100 && pcGuessTime!=100){
+                        if (playerGuessTime < pcGuessTime) {
+                            printf("Player wins!\n");
+                            generateRecord("Player", "PC VS PLAYER", "Player Win");
+                        } else if (playerGuessTime > pcGuessTime) {
+                            printf("Computer wins!\n");
+                            generateRecord("Player", "PC VS PLAYER", "Computer Win");
+                        } else {
+                            printf("It's a tie!\n");
+                            generateRecord("Player", "PC VS PLAYER", "Tie");
+                        }
+                    }else{
+                        printf("You cheat! So computer Win!");
                     }
 
                     // Prompt user for next action
