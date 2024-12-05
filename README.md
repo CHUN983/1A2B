@@ -135,8 +135,37 @@ flowchart TD
     L -- Yes --> M[End Game and display Player Wins]
     L -- No --> C[Ask Player for Another Guess]
     M --> N[End]
+```
 
+**雙人模式(Two-Player)**
+```mermaid
 
+flowchart TD
+    A[Start] --> B[Initialize Game]
+    B --> C[Generate Table for Valid Guesses]
+    C --> D[Set round = 0, guessPlayer1Num = 0, guessPlayer2Num = 0]
+    D --> E[Start Game Loop]
+    E --> F{Round > 1?}
+    F -- Yes --> G[End Game]
+    F -- No --> H[Print Current Player's Turn]
+    H --> I[Player Makes Guess]
+    I --> J[Check for Duplicate Digits]
+    J --> K{Any Duplicates?}
+    K -- Yes --> I[Ask Player to Input Again]
+    K -- No --> L[Ask Other Player for Hint (A, B)]
+    L --> M[Check if Guess is Correct (NumA == 4)]
+    M -- No --> N[Invalidate Guess in Record]
+    M -- Yes --> O[Print Results and Move to Next Round]
+    O --> P[Regenerate Table for Next Round]
+    N --> Q[Check if Input is Valid]
+    Q --> R{Is Input Valid?}
+    R -- No --> S[Print Cheat Message]
+    R -- Yes --> T[Continue Loop]
+    S --> G[End Game]
+    T --> E[Continue Game]
+    G --> U[Determine Winner Based on Guesses]
+    U --> V[Print Winner]
+    V --> W[End]
 
 
 ```
