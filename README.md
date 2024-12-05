@@ -167,8 +167,48 @@ flowchart TD
     U --> V[Print Winner]
     V --> W[End]
 
-
 ```
+
+**gameHistory.c**
+```mermaid
+
+flowchart TD
+    A[Start] --> B[Generate Current Date]
+    B --> C[Create Game Record]
+    C --> D[Save Game Record to File]
+    D --> E{Is the File Opened Successfully?}
+    E -- No --> F[Error: File Could Not Be Opened]
+    E -- Yes --> G[Write Record in CSV Format]
+    G --> H[Close File]
+    H --> I[End]
+
+    subgraph Display Game History
+        I1[Start Display Game History]
+        I2[Open Game History File]
+        I3{Is File Opened?}
+        I3 -- No --> I4[Display No Game History]
+        I3 -- Yes --> I5[Read File Line by Line]
+        I5 --> I6[Parse CSV Line]
+        I6 --> I7[Display Parsed Record]
+        I7 --> I5
+        I5 --> I8[Close File]
+        I8 --> I9[End Display]
+    end
+
+    subgraph Add Example Record
+        A1[Start Add Example Record]
+        A2[Create Game Record]
+        A3[Fill in Example Data]
+        A4[Generate Current Date]
+        A5[Save Game Record to File]
+        A6[End Example Record]
+    end
+
+    B --> I1
+    B --> A1
+
+
+````
 
 ---
 
