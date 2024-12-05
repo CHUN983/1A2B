@@ -47,21 +47,21 @@ void displayGameHistory() {
         return;
     }
 
-    printf("==========================================================\n");
-    printf("                      GAME HISTORY                        \n");
-    printf("==========================================================\n");
-    printf("%-20s %-15s %-10s %-20s\n", "NAME", "MODEL", "GRADE", "DATE");
-    printf("--------------------------------------------------\n");
+    printf("==============================================================\n");
+    printf("                        GAME HISTORY                          \n");
+    printf("==============================================================\n");
+    printf("%-20s %-15s %-20s %-25s\n", "NAME", "MODEL", "GRADE", "DATE");
+    printf("--------------------------------------------------------------\n");
 
     char line[150];
     while (fgets(line, sizeof(line), file)) {
         char name[50], mode[20], grade[20], date[20];
         sscanf(line, "%49[^,],%19[^,],%19[^,],%19[^\n]", name, mode, grade, date);
-        printf("%-20s %-15s %-10s %-20s\n", name, mode, grade, date);
+        printf("%-20s %-15s %-20s %-25s\n", name, mode, grade, date);
     }
 
     fclose(file);
-    printf("==================================================\n");
+    printf("=============================================================\n");
 }
 
 // Example of adding a record (can be called in game modes)
