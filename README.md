@@ -152,8 +152,8 @@ flowchart TD
     I --> J[Check for Duplicate Digits]
     J --> K{Any Duplicates?}
     K -- Yes --> I[Ask Player to Input Again]
-    K -- No --> L[Ask Other Player for Hint (A, B)]
-    L --> M[Check if Guess is Correct (NumA == 4)]
+    K -- No --> L[Ask Other Player for Hint]
+    L --> M[Check if Guess is Correct :NumA == 4]
     M -- No --> N[Invalidate Guess in Record]
     M -- Yes --> O[Print Results and Move to Next Round]
     O --> P[Regenerate Table for Next Round]
