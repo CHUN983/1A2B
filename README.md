@@ -128,9 +128,9 @@ flowchart TD
     F --> G{Any Duplicate?}
     G -- Yes --> D[Prompt Player Again]
     G -- No --> H[Compare Player's Guess with Computer's Number]
-    H --> I[Calculate A and B (Correct & Misplaced Digits)]
+    H --> I[Calculate A and B]
     I --> J[Display A and B]
-    J --> K[Increment Player Guess Count (PlayerguessTime++)]
+    J --> K[Increment Player Guess Count]
     K --> L{Is numA == 4?}
     L -- Yes --> M[End Game (Player Wins)]
     L -- No --> C[Ask Player for Another Guess]
