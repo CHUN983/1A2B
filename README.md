@@ -40,8 +40,7 @@
 ---
 
 ### FlowChart
-以function 為主要的flow chart
-![User Case](photo/FlowChart.png)
+**mainGame.c**
 ```mermaid
 graph TD
     A[開始] --> B[顯示主選單]
@@ -90,31 +89,52 @@ graph TD
 
 ```
 
-每個function各自的flow chart
+**出題者模式(Questioner)**
+```mermaid
+
+flowchart TD
+    A[Start] --> B[Generate First Guess]
+    B --> C[Generate Candidate Table]
+    C --> D[Initialize a and b to 0]
+    D --> E[Loop until 4A is reached]
+    E --> F[Increment Guess Count (PcguessTime++)]
+    F --> G[Display Current Guess]
+    G --> H[Get User Input (A, B)]
+    H --> I{A == 4?}
+    I -- Yes --> J[End (Correct Guess)]
+    I -- No --> K[Invalid Input Handling]
+    K --> L[Mark Current Guess as Invalid]
+    L --> M[Validate Input (isValidInput)]
+    M --> N{Input is valid?}
+    N -- No --> O[Cheat Detected!]
+    N -- Yes --> P[Calculate Remaining Valid Candidates]
+    P --> Q[Find Midpoint Candidate]
+    Q --> R[Update Guess with Midpoint Candidate]
+    R --> E
+    O --> Z[End (Cheat Detected)]
+    J --> Z
+
+```
+
+**解答者模式**
 ```mermaid
 
 graph TD
-    A[開始] --> B[顯示主選單]
-    B --> C{選擇功能}
-    C -->|a| D[顯示遊戲說明]
-    C -->|b| E[選擇遊戲模式]
-    C -->|c| F[查看遊戲歷史]
-    C -->|x| G[退出程式]
+    A[開始] --> B[生成電腦隨機數]
+    B --> C[提示玩家輸入四個不同的數字]
+    C --> D[玩家輸入數字]
+    D --> E{輸入是否合法}
+    E -->|否| F[提示重新輸入]
+    F --> C
+    E -->|是| G[初始化 A 與 B 的計數器]
+    G --> H[檢查玩家數字和電腦數字的匹配情況]
+    H --> I{是否完全猜對 (4A)}
+    I -->|否| J[顯示結果 A 和 B]
+    J --> K[增加玩家嘗試次數]
+    K --> C
+    I -->|是| L[顯示玩家勝利訊息]
+    L --> M[結束遊戲]
 
-    E -->|1| H[出題者模式]
-    E -->|2| I[解答者模式]
-    E -->|3| J[雙人模式]
-    E -->|4| K[玩家與電腦對戰模式]
-
-    H --> L[執行出題者模式]
-    I --> M[執行解答者模式]
-    J --> N[執行雙人模式]
-    K --> O[執行玩家與電腦對戰模式]
-    L --> B
-    M --> B
-    N --> B
-    O --> B
-    F --> B
 ```
 
 ---
