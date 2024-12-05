@@ -119,21 +119,23 @@ flowchart TD
 **解答者模式**
 ```mermaid
 
-graph TD
-    A[開始] --> B[生成電腦隨機數]
-    B --> C[提示玩家輸入四個不同的數字]
-    C --> D[玩家輸入數字]
-    D --> E{輸入是否合法}
-    E -->|否| F[提示重新輸入]
-    F --> C
-    E -->|是| G[初始化 A 與 B 的計數器]
-    G --> H[檢查玩家數字和電腦數字的匹配情況]
-    H --> I{是否完全猜對 (4A)}
-    I -->|否| J[顯示結果 A 和 B]
-    J --> K[增加玩家嘗試次數]
-    K --> C
-    I -->|是| L[顯示玩家勝利訊息]
-    L --> M[結束遊戲]
+flowchart TD
+    A[Start] --> B[Generate 4-digit Number for Computer]
+    B --> C[Set check = 0]
+    C --> D[Ask Player to Input Guess]
+    D --> E[Get Player's Guess]
+    E --> F[Check for Duplicate Digits]
+    F --> G{Any Duplicate?}
+    G -- Yes --> D[Prompt Player Again]
+    G -- No --> H[Compare Player's Guess with Computer's Number]
+    H --> I[Calculate A and B (Correct & Misplaced Digits)]
+    I --> J[Display A and B]
+    J --> K[Increment Player Guess Count (PlayerguessTime++)]
+    K --> L{Is numA == 4?}
+    L -- Yes --> M[End Game (Player Wins)]
+    L -- No --> C[Ask Player for Another Guess]
+    M --> N[End]
+
 
 ```
 
