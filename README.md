@@ -295,4 +295,4 @@ gcc player.c questioner.c mainGame.c gameUI.c twoplayerModel.c gameHistory.c -o 
 ## 注意事項
 - 確保 `game_history.txt` 檔案與程式位於同一目錄下，用於儲存遊戲歷史。
 - 如有任何問題或建議，可聯繫信箱：apple0908070605@gmail.com。
-
+- SB
